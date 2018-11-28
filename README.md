@@ -2,7 +2,9 @@
 
 ## Objective
 
-Building a simple progressive web application to showcase capabilities of caching, offline mode, and push/sync
+Building a simple progressive web application to showcase capabilities of caching, offline mode, and push/sync.
+
+** adding camera features for qr, barcode scanning
 
 ## Hardware / Software requirements
 
