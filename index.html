@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PWA scan app</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/styles/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link type="manifest" href="/manifest.json">
+  </head>
+
+  <body>
+  	<div class="container-fluid text-center">
+  		<!-- navigation bar -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		  <a class="navbar-brand" href="/">PWA demo</a>
+		    <ul class="navbar-nav ml-auto">
+		      <li class="nav-item">
+		       	<button class="btn btn-danger scan">SCAN</button>
+		      </li>
+		    </ul>	 
+		</nav>
+
+		<!-- main body -->
+		<main id="scanner">
+			<h1>Scan Barcode</h1>
+
+			<video id="player" autoplay width=100% height=auto></video>
+			<button id="capture">Capture</button>
+			<canvas id="canvas" width=120 height=120></canvas>
+			
+<!-- 			  <input type=file
+			         accept="image/*"
+			         capture=environment
+			         onchange="openQRCamera(this);"
+			         tabindex=-1
+			  > -->
+
+		</main>
+	</div>
+
+<!-- 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+	<script src="scripts/main.js"></script>
+	<script src="scripts/qr_packed.js"></script>
+
+  </body>
+</html>
