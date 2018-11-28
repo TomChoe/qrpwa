@@ -17,7 +17,7 @@ const convertKey = (base64String) => {
   return outputArray;
 };
 
-document.getElementById("scanner").style.display = "none";
+// document.getElementById("scanner").style.display = "none";
 
 document.querySelector('.scan').addEventListener('click', () => {
 	scanner();
@@ -247,29 +247,29 @@ const scanner = () => {
 	  //   });
 }
 
-const picture = document.getElementById('camera');
+// const picture = document.getElementById('camera');
 
-picture.addEventListener('change', (e) => doSomething(e.target.files))
+// picture.addEventListener('change', (e) => doSomething(e.target.files))
 
-const doSomething = (pic) => {
-	console.log('this is the picture being sent ', pic);
-}
-
-// function openQRCamera(node) {
-//   var reader = new FileReader();
-//   reader.onload = function() {
-//     node.value = "";
-//     qrcode.callback = function(res) {
-//       if(res instanceof Error) {
-//         alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
-//       } else {
-//         node.parentNode.previousElementSibling.value = res;
-//       }
-//     };
-//     qrcode.decode(reader.result);
-//   };
-//   reader.readAsDataURL(node.files[0]);
+// const doSomething = (pic) => {
+// 	console.log('this is the picture being sent ', pic);
 // }
+
+function openQRCamera(node) {
+  var reader = new FileReader();
+  reader.onload = function() {
+    node.value = "";
+    qrcode.callback = function(res) {
+      if(res instanceof Error) {
+        alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
+      } else {
+        node.parentNode.previousElementSibling.value = res;
+      }
+    };
+    qrcode.decode(reader.result);
+  };
+  reader.readAsDataURL(node.files[0]);
+}
 
 
 
