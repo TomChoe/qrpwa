@@ -59,22 +59,22 @@
 <!-- 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
 	<script src="scripts/main.js"></script>
 	<script type="module">
-	    import QrScanner from "/scripts/qr-scanner.min.js";
-	    const video = document.getElementById('qr-video');
-	    const camQrResult = document.getElementById('cam-qr-result');
+    import QrScanner from "./scripts/qr-scanner.js";
+    const video = document.getElementById('qr-video');
+    const camQrResult = document.getElementById('cam-qr-result');
 
-	    function setResult(label, result) {
-	        label.textContent = result;
-	        label.style.color = 'teal';
-	        clearTimeout(label.highlightTimeout);
-	        label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
-	    }
+    function setResult(label, result) {
+        label.textContent = result;
+        label.style.color = 'teal';
+        clearTimeout(label.highlightTimeout);
+        label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
+    }
 
 
-	    // ####### Web Cam Scanning #######
+    // ####### Web Cam Scanning #######
 
-	    const scanner = new QrScanner(video, result => setResult(camQrResult, result));
-	    scanner.start();
+    const scanner = new QrScanner(video, result => setResult(camQrResult, result));
+    scanner.start();
 
 	</script>
   </body>
