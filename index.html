@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>PWA scan app</title>
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/styles/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link type="manifest" href="/manifest.json">
@@ -59,6 +58,24 @@
 
 <!-- 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
 	<script src="scripts/main.js"></script>
-	<script src="scripts/qr-scanner.min.js"></script>
+	<script type="module">
+	    import QrScanner from "/scripts/qr-scanner.min.js";
+	    const video = document.getElementById('qr-video');
+	    const camQrResult = document.getElementById('cam-qr-result');
+
+	    function setResult(label, result) {
+	        label.textContent = result;
+	        label.style.color = 'teal';
+	        clearTimeout(label.highlightTimeout);
+	        label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
+	    }
+
+
+	    // ####### Web Cam Scanning #######
+
+	    const scanner = new QrScanner(video, result => setResult(camQrResult, result));
+	    scanner.start();
+
+	</script>
   </body>
 </html>
