@@ -19,9 +19,9 @@ const convertKey = (base64String) => {
 
 // document.getElementById("scanner").style.display = "none";
 
-document.querySelector('.scan').addEventListener('click', () => {
-	scanner();
-})
+// document.querySelector('.scan').addEventListener('click', () => {
+// 	scanner();
+// })
 
 if ('mediaDevices' in navigator) {
 	console.log('camera is available on device');
@@ -221,17 +221,17 @@ async function mockDataPush(req) {
 	console.log('request sent to node')
 };
 
-const scanner = () => {
-	console.log('scanner')
-    document.getElementById("scanner").style.display = "inline";
-  	const player = document.getElementById('player');
-  	const canvas = document.getElementById('canvas');
-	const context = canvas.getContext('2d');
-	const captureButton = document.getElementById('capture');
+// const scanner = () => {
+// 	console.log('scanner')
+//     document.getElementById("scanner").style.display = "inline";
+//   	const player = document.getElementById('player');
+//   	const canvas = document.getElementById('canvas');
+// 	const context = canvas.getContext('2d');
+// 	const captureButton = document.getElementById('capture');
 
-	  const constraints = {
-	    video: true,
-	  };
+// 	  const constraints = {
+// 	    video: true,
+// 	  };
 
 	  // captureButton.addEventListener('click', () => {
 	  //   // Draw the video frame to the canvas.
@@ -245,7 +245,7 @@ const scanner = () => {
 	  //   .then((stream) => {
 	  //     player.srcObject = stream;
 	  //   });
-}
+// }
 
 // const picture = document.getElementById('camera');
 
@@ -255,23 +255,39 @@ const scanner = () => {
 // 	console.log('this is the picture being sent ', pic);
 // }
 
-function openQRCamera(node) {
-  var reader = new FileReader();
-  reader.onload = function() {
-    node.value = "";
-    qrcode.callback = function(res) {
-      if(res instanceof Error) {
-        alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
-      } else {
-        node.parentNode.previousElementSibling.value = res;
-      }
-    };
-    qrcode.decode(reader.result);
-  };
-  reader.readAsDataURL(node.files[0]);
+// function openQRCamera(node) {
+//   var reader = new FileReader();
+//   reader.onload = function() {
+//     node.value = "";
+//     qrcode.callback = function(res) {
+//       if(res instanceof Error) {
+//         alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
+//       } else {
+//         node.parentNode.previousElementSibling.value = res;
+//       }
+//     };
+//     qrcode.decode(reader.result);
+//   };
+//   reader.readAsDataURL(node.files[0]);
+// }
+
+import QrScanner from "../qr-scanner.min.js";
+const video = document.getElementById('qr-video');
+
+const camQrResult = document.getElementById('cam-qr-result');
+
+function setResult(label, result) {
+    label.textContent = result;
+    label.style.color = 'teal';
+    clearTimeout(label.highlightTimeout);
+    label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
 }
 
 
+// ####### Web Cam Scanning #######
+
+const scanner = new QrScanner(video, result => setResult(camQrResult, result));
+scanner.start();
 
 
 
